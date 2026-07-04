@@ -1,0 +1,31 @@
+/* Sidebar.css */
+.sidebar {
+  width: 180px;
+  background-color: #141414;
+  /* Netflix dark background */
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0;
+  border-right: 1px solid #2a2a2a;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.sidebar div {
+  padding: 15px 30px;
+  color: #b3b3b3;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar div:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #e50914;
+  /* Netflix Red accent */
+}
