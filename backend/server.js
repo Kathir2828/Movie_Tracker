@@ -17,10 +17,10 @@ app.get('/', (req, res) => {
 });
 
 // Proxy route for TMDB requests
-app.get('/api/tmdb/*', async (req, res) => {
+app.get('/api/tmdb/:path(*)', async (req, res) => {
   try {
     // Extract the path after /api/tmdb/
-    const path = req.params[0];
+    const path = req.params.path;
     
     // Merge the query parameters and append the API key securely on the backend
     const queryParams = new URLSearchParams({
