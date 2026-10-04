@@ -12,11 +12,13 @@ function SearchPage() {
   const [isLoading, setIsloading] = useState(false);
 
 
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
   const handleSearch = async () => {
     try {
       setIsloading(true);
 
-      fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieName}`)
+      fetch(`${BASE_URL}/search/movie?query=${movieName}`)
         .then((res) => res.json())
         .then((data) => setMovieList(data.results))
         .catch((err) => console.log(err, " error fetching movies in searchPage"));

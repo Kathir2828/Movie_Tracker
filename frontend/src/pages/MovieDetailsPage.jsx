@@ -12,11 +12,13 @@ function MovieDetailsPage() {
     const [isInWatchlist, setIsInWatchlist] = useState(false);
     const Navigate = useNavigate();
 
+    const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
     useEffect(() => {
         const fun = async () => {
             try {
                 // Fetch movie detailssss
-                const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`);
+                const res = await fetch(`${BASE_URL}/movie/${id}`);
                 const data = await res.json();
                 setMovieDetails(data);
 

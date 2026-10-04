@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar.jsx';
 
 import { auth } from '../config/firebase.js';
 
-const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY_TMDB;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 const TARGET_YEAR = 2026;
 function HomePage() {
 
@@ -25,7 +25,7 @@ function HomePage() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&primary_release_year=${TARGET_YEAR}&sort_by=popularity.desc&page=${page}`)
+    fetch(`${BASE_URL}/discover/movie?primary_release_year=${TARGET_YEAR}&sort_by=popularity.desc&page=${page}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.results) {
@@ -67,7 +67,7 @@ function HomePage() {
 
   useEffect(() => {
 
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_original_language=ta&certification_country=IN&certification.lte=U/A&sort_by=vote_average.desc&vote_count.gte=10&page=1`)
+    fetch(`${BASE_URL}/discover/movie?with_original_language=ta&certification_country=IN&certification.lte=U/A&sort_by=vote_average.desc&vote_count.gte=10&page=1`)
       .then((res) => res.json())
       .then((data) => {
         setTopRatedMovies(data.results);
@@ -77,7 +77,7 @@ function HomePage() {
 
 
 
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_original_language=ta&include_adult=false&primary_release_year=${TARGET_YEAR}&sort_by=popularity.desc&page=1`).then((res) => res.json())
+    fetch(`${BASE_URL}/discover/movie?with_original_language=ta&include_adult=false&primary_release_year=${TARGET_YEAR}&sort_by=popularity.desc&page=1`).then((res) => res.json())
       .then((data) => setUpcomingMovies(data.results))
       .catch((err) => console.log("Error fetching Upcoming", err));
   }, []);
